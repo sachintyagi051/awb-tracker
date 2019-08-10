@@ -1,0 +1,5 @@
+{
+	"secret": "seceretkey",
+	"database": "mongodb://localhost/awb_tracking",
+	"mongo_url": "mongodb+srv://avnish:avnish@cluster0-dqwag.mongodb.net"
+}
