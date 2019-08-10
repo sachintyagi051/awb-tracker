@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const config = require('../configure/config')
+const config = require('../../configure/config')
 
 module.exports = (req, res, next) => {
     if (!req.headers.token) {

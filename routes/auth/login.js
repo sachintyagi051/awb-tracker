@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const login = require('../../models/users');
 
-const config = require('../configure/config');
+const config = require('../../configure/config');
 
 module.exports = (req, res) => {
     if (req.body.Username && req.body.Password) {

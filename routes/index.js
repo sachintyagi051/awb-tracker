@@ -8,7 +8,7 @@ router.post('/add-awb', tokenVerify, require('./track/addAWB.js'));
 
 router.post('/add-courier', tokenVerify, require('./track/addCourier'));
 
-router.get('/track/:id', tokenVerify, require('./track/fetchData'));
+router.get('/track/:awb', tokenVerify, require('./track/fetchData'));
 
 router.post('/update-status', tokenVerify, require('./track/updateCourierStatus'));
 

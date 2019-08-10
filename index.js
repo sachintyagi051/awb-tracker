@@ -13,12 +13,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', require('./routes/index'));
 
-mongoose.connect(config.mongo_url, { useNewUrlParser: true }, () => {
+mongoose.connect(config.hosted, { useNewUrlParser: true }, () => {
     console.log('Database Connected.')
 });
 
 app.listen(port, () => {
-    console.log('Server running.')
+    console.log('Server running on port ' + port + '.')
 });
 
 module.exports = app;
