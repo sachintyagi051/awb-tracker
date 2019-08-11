@@ -13,6 +13,15 @@ app.use(morgan('dev'));
 
 app.set('secretKey', config.secret);
 
+/* Global Cross-Origin Access */
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,token');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next()
+})
+
 app.use('/', require('./routes/index'));
 
 module.exports = app;
