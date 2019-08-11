@@ -9,21 +9,31 @@ const getTracking = (req, res) => {
     if (req.decoded && req.decoded.email) {
         query.addedBy = req.decoded.email
     }
-
-    trackingModel.find(query).skip((page - 1) * per_page).exec((err, doc) => {
+    trackingModel.countDocuments(query, (err, count) => {
         if (err) {
             res.json({
                 success: false,
                 msg: 'Something went wrong, please try again later.'
             })
         } else {
-            res.json({
-                success: true,
-                msg: 'Tracking Listings Found',
-                tracking: doc
+            trackingModel.find(query).skip((page - 1) * per_page).exec((err, doc) => {
+                if (err) {
+                    res.json({
+                        success: false,
+                        msg: 'Something went wrong, please try again later.'
+                    })
+                } else {
+                    res.json({
+                        success: true,
+                        msg: 'Tracking Listings Found',
+                        tracking: doc,
+                        per_page: per_page,
+                        total_awb: count
+                    })
+                }
             })
         }
-    })
+    });
 }
 
 module.exports = getTracking;
