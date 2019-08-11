@@ -3,18 +3,20 @@ const router = express.Router();
 
 const tokenVerify = require('./auth/tokenVerify');
 
-// Tracking Routes
-router.post('/add-awb', tokenVerify, require('./track/addAWB.js'));
-
-router.post('/add-courier', tokenVerify, require('./track/addCourier'));
-
-router.get('/track/:awb', tokenVerify, require('./track/fetchData'));
-
-router.post('/update-status', tokenVerify, require('./track/updateCourierStatus'));
-
 // Authentication Routes
 router.post('/login', require('./auth/login'));
 
-router.post('/registration', require('./auth/registration'));
+router.post('/register', require('./auth/register'));
+
+// Tracking Routes
+router.get('/track/all', require('./tracking/getTracking'));
+
+router.get('/track/user', tokenVerify, require('./tracking/getTracking'));
+
+router.post('/add-awb', tokenVerify, require('./tracking/addAwb.js'));
+
+router.post('/edit-awb', tokenVerify, require('./tracking/updateTracking'));
+
+router.post('/delete-awb', tokenVerify, require('./tracking/deleteAwb'));
 
 module.exports = router;

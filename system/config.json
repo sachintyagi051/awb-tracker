@@ -1,0 +1,5 @@
+{
+	"secret": "seceretkey",
+	"database": "mongodb://localhost/awb_tracking",
+	"hosted": "mongodb+srv://admin:Bf7AX7uIBfhcXSqx@cluster0-owpdn.mongodb.net/awb?retryWrites=true&w=majority"
+}

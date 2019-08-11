@@ -1,14 +1,13 @@
 const jwt = require('jsonwebtoken');
-const config = require('../../configure/config')
 
-module.exports = (req, res, next) => {
+const verify = (req, res, next) => {
     if (!req.headers.token) {
         res.json({
             success: false,
             msg: "Please login first"
         })
     } else {
-        jwt.verify(req.headers.token, config.secret, (err, data) => {
+        jwt.verify(req.headers.token, req.app.get('secretKey'), (err, data) => {
             if (err) {
                 res.json({
                     success: false,
@@ -21,3 +20,5 @@ module.exports = (req, res, next) => {
         })
     }
 }
+
+module.exports = verify;
