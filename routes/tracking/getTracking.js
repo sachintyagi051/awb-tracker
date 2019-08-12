@@ -9,6 +9,9 @@ const getTracking = (req, res) => {
     if (req.decoded && req.decoded.email) {
         query.addedBy = req.decoded.email
     }
+
+    console.log(query)
+
     trackingModel.countDocuments(query, (err, count) => {
         if (err) {
             res.json({
